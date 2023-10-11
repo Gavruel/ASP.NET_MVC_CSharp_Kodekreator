@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ASP.NET_MVC___C__Portfolio.Models.Games>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <h1>Gerencie os jogos</h1><br/>
+    <p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-success" asp-action="Create">Adicionar novo jogo</a>
+        </div>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plataformas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpresaDesenvolvedora)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataLancamento)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plataformas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpresaDesenvolvedora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataLancamento)
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-info" style="margin-right: 1px ;margin-left: 1px ;" asp-action="Edit" asp-route-id="@item.ID">Editar</a>
+                            <a class="btn btn-warning" style="margin-right: 1px ;margin-left: 1px ;" asp-action="Details" asp-route-id="@item.ID">Detalhes</a>
+                            <a class="btn btn-danger" style="margin-right: 1px ;margin-left: 1px ;" asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

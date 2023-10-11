@@ -1,0 +1,67 @@
+﻿@model ASP.NET_MVC___C__Portfolio.Models.Games
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Games</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control"/>
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <!--
+            <div class="form-group">
+                <label asp-for="Plataformas" class="control-label"></label>
+                <input asp-for="Plataformas" class="form-control" />
+                <span asp-validation-for="Plataformas" class="text-danger"></span>
+            </div>
+            -->
+            <div class="form-group">
+                <label asp-for="Plataformas" class="control-label"></label>
+                <select asp-for="Plataformas" class="form-control">
+                    <option value="">Selecione uma plataforma</option>
+                    @foreach (var plataforma in ViewBag.Plataformas)
+                    {
+                        <option value="@plataforma.Value">@plataforma.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="Plataformas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpresaDesenvolvedora" class="control-label"></label>
+                <input asp-for="EmpresaDesenvolvedora" class="form-control" />
+                <span asp-validation-for="EmpresaDesenvolvedora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="DataLancamento" class="control-label">Data do Lançamento</label>
+                <input asp-for="DataLancamento" class="form-control" />
+                <span asp-validation-for="DataLancamento" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

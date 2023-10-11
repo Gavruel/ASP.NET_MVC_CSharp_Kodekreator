@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ASP.NET_MVC___C__Portfolio.Models.Games>
+
+@{
+    ViewData["Title"] = "Lista de Jogos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sua Lista de Jogos</h1>
+    <p>Veja abaixo os jogos no nosso catálogo</p>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Jogo</th>
+            <th scope="col">Desenvolvedora</th>
+            <th scope="col">Lançamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var jogo in Model)
+        {
+            <tr>
+                <td>@(ViewBag.Counter++)</td> <!--jogo.ID-->
+                <td>@jogo.Nome</td>
+                <td>@jogo.EmpresaDesenvolvedora</td>
+                <td>@jogo.DataLancamento.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
